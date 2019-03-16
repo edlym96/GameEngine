@@ -1,6 +1,5 @@
 #include "Game.h"
 
-
 Game::Game()
 {
 	_window = nullptr;
@@ -16,6 +15,9 @@ Game::~Game()
 
 void Game::run() {
 	initSystems();
+
+	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);
+
 	gameLoop();
 }
 
@@ -26,6 +28,34 @@ void Game::initSystems() {
 	//Create Window
 	_window = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenWidth, _screenHeight, SDL_WINDOW_OPENGL);
 
+	if (_window == nullptr) {
+		fatalError("SDL Window could not be opened");
+	}
+
+	// Give window SDL_GLcontext
+	SDL_GLContext glContext = SDL_GL_CreateContext(_window);
+	if (glContext == nullptr) {
+		fatalError("SDL_GL context could not be created");
+	}
+
+	// Initialise GLEW
+	GLenum error = glewInit();
+	if (error != GLEW_OK) {
+		fatalError("Could not initialise GLEW");
+	}
+
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); // Sets two windows. Instead of having one window where we repeatedly draw and clear, have two windows as one is cleared the other is being drawn
+
+	glClearColor(0.0f, 0.0f, 1.0f, 1.0f); // Whenever you clear color buffer, it is cleared to this color
+
+	initShaders();
+}
+
+void Game::initShaders() {
+	_colorProgram.compileShaders("../Shaders/colorShading.vert", "../Shaders/colorShading.frag");
+	_colorProgram.addAttribute("vertexPosition");
+	_colorProgram.addAttribute("vertexColor");
+	_colorProgram.linkShaders();
 }
 
 void Game::processInput() {
@@ -44,5 +74,19 @@ void Game::processInput() {
 void Game::gameLoop() {
 	while (_gameState != GameState::EXIT) {
 		processInput();
+		drawGame();
 	}
+}
+
+void Game::drawGame() {
+	glClearDepth(1.0); // Set a variable for OpenGL to clear to
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear screen (buffer)
+
+	_colorProgram.use();
+
+	_sprite.draw();
+
+	_colorProgram.unuse();
+
+	SDL_GL_SwapWindow(_window);
 }
