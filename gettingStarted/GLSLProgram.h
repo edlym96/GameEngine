@@ -12,6 +12,7 @@ public:
 	void compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath); //Read vertex and fragment shader from source and compile
 	void linkShaders(); //link the shaders into final program
 	void addAttribute(const std::string& attributeName); //abind attributes from shader language to the program
+	GLint getUniformLocation(const std::string& uniformName);
 	void use();
 	void unuse();
 private:

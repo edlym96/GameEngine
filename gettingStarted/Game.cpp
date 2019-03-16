@@ -1,11 +1,11 @@
 #include "Game.h"
 
-Game::Game()
+Game::Game():_window(nullptr),
+	_screenWidth(960),
+	_screenHeight(600), 
+	_gameState(GameState::PLAY),
+	_time(0.0f)
 {
-	_window = nullptr;
-	_screenWidth = 960;
-	_screenHeight = 600;
-	_gameState = GameState::PLAY;
 }
 
 
@@ -74,15 +74,20 @@ void Game::processInput() {
 void Game::gameLoop() {
 	while (_gameState != GameState::EXIT) {
 		processInput();
+		_time += 0.01;
 		drawGame();
 	}
 }
 
 void Game::drawGame() {
+
 	glClearDepth(1.0); // Set a variable for OpenGL to clear to
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear screen (buffer)
 
 	_colorProgram.use();
+
+	GLint timeLocation = _colorProgram.getUniformLocation("time");
+	glUniform1f(timeLocation, _time);
 
 	_sprite.draw();
 
