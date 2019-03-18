@@ -18,6 +18,8 @@ void Game::run() {
 
 	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);
 
+	_playerTexture = ImageLoader::loadPNG("../Textures/PNG/CharacterRight_Standing.png");
+
 	gameLoop();
 }
 
@@ -55,6 +57,7 @@ void Game::initShaders() {
 	_colorProgram.compileShaders("../Shaders/colorShading.vert", "../Shaders/colorShading.frag");
 	_colorProgram.addAttribute("vertexPosition");
 	_colorProgram.addAttribute("vertexColor");
+	_colorProgram.addAttribute("vertexUV");
 	_colorProgram.linkShaders();
 }
 
@@ -83,14 +86,19 @@ void Game::drawGame() {
 
 	glClearDepth(1.0); // Set a variable for OpenGL to clear to
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear screen (buffer)
-
+	
 	_colorProgram.use();
+	glActiveTexture(GL_TEXTURE0); // active texture 0. Could have multiple active texture at once
+	glBindTexture(GL_TEXTURE_2D, _playerTexture.id);
+	GLint textureLocation = _colorProgram.getUniformLocation("mySampler");
+	glUniform1i(textureLocation, 0); // bind GLTexture0 to textureLocation
 
 	GLint timeLocation = _colorProgram.getUniformLocation("time");
 	glUniform1f(timeLocation, _time);
 
 	_sprite.draw();
 
+	glBindTexture(GL_TEXTURE_2D, 0);
 	_colorProgram.unuse();
 
 	SDL_GL_SwapWindow(_window);
