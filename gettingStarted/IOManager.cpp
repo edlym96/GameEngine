@@ -1,7 +1,7 @@
 #include "IOManager.h"
 
 
-bool IOManager::readFileToBuffer(const std::string& filePath, std::vector<char>& buffer) {
+bool IOManager::readFileToBuffer(const std::string& filePath, std::vector<unsigned char>& buffer) {
 	std::ifstream file(filePath, std::ios::binary);
 	if (file.fail()) {
 		perror(filePath.c_str());
@@ -21,6 +21,6 @@ bool IOManager::readFileToBuffer(const std::string& filePath, std::vector<char>&
 
 	buffer.resize(fileSize);
 
-	file.read(&(buffer[0]), fileSize); //get the address of first element in buffer vector. This is essentially a pointer to beginning of the c-string
+	file.read((char *)&(buffer[0]), fileSize); //get the address of first element in buffer vector. This is essentially a pointer to beginning of the c-string
 	file.close();
 }
