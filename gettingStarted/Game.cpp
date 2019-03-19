@@ -16,9 +16,15 @@ Game::~Game()
 void Game::run() {
 	initSystems();
 
-	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(-1.0f, -1.0f, 1.0f, 1.0f, "../Textures/PNG/CharacterRight_Standing.png");
+	
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(0.0f, -1.0f, 1.0f, 1.0f, "../Textures/PNG/CharacterRight_Standing.png");
 
-	_playerTexture = ImageLoader::loadPNG("../Textures/PNG/CharacterRight_Standing.png");
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "../Textures/PNG/CharacterRight_Standing.png");
+	//_playerTexture = ImageLoader::loadPNG("../Textures/PNG/CharacterRight_Standing.png");
 
 	gameLoop();
 }
@@ -69,7 +75,8 @@ void Game::processInput() {
 				_gameState = GameState::EXIT;
 				break;
 			case SDL_MOUSEMOTION:
-				std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
+				//std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
+				break;
 		}
 	}
 }
@@ -89,15 +96,17 @@ void Game::drawGame() {
 	
 	_colorProgram.use();
 	glActiveTexture(GL_TEXTURE0); // active texture 0. Could have multiple active texture at once
-	glBindTexture(GL_TEXTURE_2D, _playerTexture.id);
+	
 	GLint textureLocation = _colorProgram.getUniformLocation("mySampler");
 	glUniform1i(textureLocation, 0); // bind GLTexture0 to textureLocation
 
 	GLint timeLocation = _colorProgram.getUniformLocation("time");
 	glUniform1f(timeLocation, _time);
 
-	_sprite.draw();
-
+	for (int i = 0; i < _sprites.size(); i++) {
+		_sprites[i]->draw();
+	}
+	
 	glBindTexture(GL_TEXTURE_2D, 0);
 	_colorProgram.unuse();
 

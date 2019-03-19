@@ -1,3 +1,3 @@
 ﻿  Game.cpp
-c:\users\user\documents\projects\gettingstarted\gettingstarted\game.cpp(80): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\user\documents\projects\gettingstarted\gettingstarted\game.cpp(87): warning C4305: '+=': truncation from 'double' to 'float'
   gettingStarted.vcxproj -> C:\Users\User\Documents\Projects\gettingStarted\Debug\gettingStarted.exe
