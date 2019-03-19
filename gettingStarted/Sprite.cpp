@@ -88,7 +88,9 @@ void Sprite::draw() {
 	glBindTexture(GL_TEXTURE_2D, _texture.id);
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
-	//glEnableVertexAttribArray(0); //Enable vertex attrib array of index i (only position, no lighting)
+	glEnableVertexAttribArray(0); //Enable vertex attrib array of index i
+	glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(2);
 
 	// Position attrib pointer
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position)); //0th index of vertex attribarray, size of two (x and y), of type float. 0 offest because in vertex struct, position is first
@@ -102,5 +104,7 @@ void Sprite::draw() {
 	glDrawArrays(GL_TRIANGLES, 0, 6); //Draw triangles, strat index 0 and 6 vertices
 
 	glDisableVertexAttribArray(0);
+	glDisableVertexAttribArray(1);
+	glDisableVertexAttribArray(2);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
