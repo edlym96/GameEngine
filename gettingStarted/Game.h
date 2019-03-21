@@ -4,11 +4,18 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Errors.h"
-#include "Sprite.h"
-#include "GLSLProgram.h"
-#include "GLTexture.h"
-
+#include <DawnEngine/DawnEngine.h>
+#include <DawnEngine/Errors.h>
+#include <DawnEngine/Sprite.h>
+#include <DawnEngine/GLSLProgram.h>
+#include <DawnEngine/GLTexture.h>
+#include <DawnEngine/Window.h>
+#include <DawnEngine/Camera2D.h>
+#include <DawnEngine/SpriteBatch.h>
+#include <DawnEngine/ResourceManager.h>
+#include <DawnEngine/InputManager.h>
+#include <DawnEngine/Timing.h>
+#include "Bullet.h"
 enum class GameState {PLAY,EXIT};
 
 class Game
@@ -27,14 +34,25 @@ private:
 	void gameLoop();
 	void drawGame();
 
-	SDL_Window* _window;
+	DawnEngine::Window _window;
 	int _screenWidth;
 	int _screenHeight;
 	GameState _gameState;
 
-	std::vector<Sprite*> _sprites;
+	//std::vector<DawnEngine::Sprite*> _sprites;
 
-	GLSLProgram _colorProgram;
+	DawnEngine::GLSLProgram _colorProgram;
+	DawnEngine::Camera2D _camera;
+
+	DawnEngine::SpriteBatch _spriteBatch;
+
+	DawnEngine::InputManager _inputManager;
+	DawnEngine::FpsLimiter _fpsLimiter;
+
+	std::vector<Bullet> _bullets;
+
+	float _fps;
+	float _maxFPS;
 
 	float _time;
 };
