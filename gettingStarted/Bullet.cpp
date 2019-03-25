@@ -21,8 +21,8 @@ void Bullet::draw(DawnEngine::SpriteBatch& spriteBatch) {
 	static DawnEngine::GLTexture texture = DawnEngine::ResourceManager::getTexture("../Textures/PNG/CharacterRight_Standing.png");
 	DawnEngine::Color color;
 	color.r = 255;
-	color.g = 255;
-	color.b = 255;
+	color.g = 0;
+	color.b = 0;
 	color.a = 255;
 
 	glm::vec4 posAndSize = glm::vec4(_position.x, _position.y, 30, 30);

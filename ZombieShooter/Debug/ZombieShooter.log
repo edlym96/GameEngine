@@ -1,0 +1,10 @@
+﻿  Level.cpp
+c:\users\user\documents\projects\gettingstarted\zombieshooter\level.cpp(34): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\level.cpp(35): warning C4018: '<': signed/unsigned mismatch
+  MainGame.cpp
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(16): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(70): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
+  ZombieShooter.cpp
+  main.cpp
+  Generating Code...
+  ZombieShooter.vcxproj -> C:\Users\User\Documents\Projects\gettingStarted\Debug\ZombieShooter.exe
