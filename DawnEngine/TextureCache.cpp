@@ -22,11 +22,11 @@ namespace DawnEngine {
 
 			_textureMap.insert(make_pair(texturePath, newTexture));
 
-			std::cout << "Loaded Texture!" << std::endl;
+			//std::cout << "Loaded Texture!" << std::endl;
 			return newTexture;
 		}
 
-		std::cout << "Used Cached Texture!" << std::endl;
+		//std::cout << "Used Cached Texture!" << std::endl;
 
 		return mit->second;
 	}

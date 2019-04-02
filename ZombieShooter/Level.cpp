@@ -31,16 +31,18 @@ Level::Level(const std::string& fileName)
 	whiteColor.b = 255;
 	whiteColor.a = 255;
 
-	for (int i = 0; i < _levelData.size(); ++i) {
-		for (int j = 0; j < _levelData[i].size(); ++j) {
+	for (int y = 0; y < _levelData.size(); ++y) {
+		for (int x = 0; x < _levelData[y].size(); ++x) {
 			// get the tile
-			char tile = _levelData[i][j];
+			char tile = _levelData[y][x];
 
 			//Get dest rect
-			glm::vec4 destRect(j * TILE_WIDTH, i * TILE_WIDTH, TILE_WIDTH, TILE_WIDTH);
+			glm::vec4 destRect(x * TILE_WIDTH, y * TILE_WIDTH, TILE_WIDTH, TILE_WIDTH);
 
 			switch (tile) {
 			case 'B':
+				_spriteBatch.draw(destRect, uvRect, DawnEngine::ResourceManager::getTexture("Textures/red_bricks.png").id, 0.0f, whiteColor);
+				break;
 			case 'R':
 				_spriteBatch.draw(destRect, uvRect, DawnEngine::ResourceManager::getTexture("Textures/red_bricks.png").id, 0.0f, whiteColor);
 				break;
@@ -51,16 +53,18 @@ Level::Level(const std::string& fileName)
 				_spriteBatch.draw(destRect, uvRect, DawnEngine::ResourceManager::getTexture("Textures/light_bricks.png").id, 0.0f, whiteColor);
 				break;
 			case '@':
-				_startPlayerPosition.x = j * TILE_WIDTH;
-				_startPlayerPosition.y = i * TILE_WIDTH;
+				_levelData[y][x] = '.';
+				_startPlayerPosition.x = x * TILE_WIDTH;
+				_startPlayerPosition.y = y * TILE_WIDTH;
 				break;
 			case 'Z':
-				_zombieStartPositions.emplace_back(j*TILE_WIDTH, i*TILE_WIDTH);
+				_levelData[y][x] = '.';
+				_zombieStartPositions.emplace_back(x*TILE_WIDTH, y*TILE_WIDTH);
 				break;
 			case '.':
 				break;
 			default:
-				std::printf("Unexpected symbol at %c at (%d,%d)", tile, j, i);
+				std::printf("Unexpected symbol at %c at (%d,%d)", tile, x, y);
 				break;
 			}
 		}
@@ -70,6 +74,17 @@ Level::Level(const std::string& fileName)
 
 void Level::draw() {
 	_spriteBatch.renderBatch();
+}
+
+glm::vec2 Level::getStartPlayerPos() const{
+	return _startPlayerPosition;
+}
+const std::vector<glm::vec2>& Level::getZombieStartPos() const{
+	return _zombieStartPositions;
+}
+
+const std::vector<std::string>& Level::getLevelData() const {
+	return _levelData;
 }
 
 Level::~Level()

@@ -7,8 +7,12 @@
 #include <DawnEngine/InputManager.h>
 #include <DawnEngine/Camera2D.h>
 #include <DawnEngine/Timing.h>
+#include <DawnEngine/SpriteBatch.h>
 #include <iostream>
 #include "Level.h"
+#include "Player.h"
+
+#include "Zombie.h"
 
 enum class GameState {
 	PLAY,
@@ -28,12 +32,17 @@ private:
 	//Initialise core systems
 	void initSystems();
 
+	// Initialises the level and sets up everything
+	void initLevel();
+
 	//Initialise shaders
 	void initShaders();
 
 	// Main Game loop for the program
 	void gameLoop();
 
+	//Update all agents
+	void updateAgents();
 
 	//Handles input processing
 	void processInput();
@@ -48,11 +57,17 @@ private:
 
 	DawnEngine::InputManager _inputManager; // Handles input
 
-	DawnEngine::Camera2D _camera; // Main camera
+	DawnEngine::Camera2D _camera; // Main camera 
+
+	DawnEngine::SpriteBatch _agentSpriteBatch; //Draws all agents
 
 	std::vector<Level*> _levels; //vector of all levels
 
 	int _screenWidth, _screenHeight;
+
+	Player* _player;
+	std::vector<Human*> _humans; //Vector for all humans
+	std::vector<Zombie*> _zombies; //Vector for all zombies
 
 	GameState _gameState;
 

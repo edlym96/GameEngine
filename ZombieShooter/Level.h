@@ -7,7 +7,7 @@
 #include <DawnEngine/SpriteBatch.h>
 #include <DawnEngine/ResourceManager.h>
 
-const int TILE_WIDTH = 64;
+const int TILE_WIDTH = 32;
 
 class Level
 {
@@ -18,6 +18,10 @@ public:
 
 	void draw();
 
+	//getters
+	glm::vec2 getStartPlayerPos() const;
+	const std::vector<glm::vec2>& getZombieStartPos() const;
+	const std::vector<std::string>& getLevelData() const;
 private:
 	std::vector<std::string> _levelData;
 	int _numHumans;
@@ -25,7 +29,7 @@ private:
 
 	DawnEngine::ResourceManager* _resourceManager; //Pointer to the manager in maingame
 
-	glm::ivec2 _startPlayerPosition;
-	std::vector<glm::ivec2> _zombieStartPositions;
+	glm::vec2 _startPlayerPosition;
+	std::vector<glm::vec2> _zombieStartPositions;
 };
 

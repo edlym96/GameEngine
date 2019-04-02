@@ -77,7 +77,7 @@ namespace DawnEngine {
 		}
 		int offset = 0;
 		int currentVertex = 0;
-		_renderBatches.emplace_back(0, 6, _glyphs[0]->texture); // create copy of render batch using empalce back
+		_renderBatches.emplace_back(offset, 6, _glyphs[0]->texture); // create copy of render batch using empalce back
 		vertices[currentVertex++] = _glyphs[0]->topLeft;
 		vertices[currentVertex++] = _glyphs[0]->bottomLeft;
 		vertices[currentVertex++] = _glyphs[0]->bottomRight;
@@ -89,7 +89,7 @@ namespace DawnEngine {
 
 		for (int cg = 1; cg < _glyphs.size(); cg++) {
 			if (_glyphs[cg]->texture != _glyphs[cg - 1]->texture) {
-				_renderBatches.emplace_back(0, 6, _glyphs[cg]->texture);
+				_renderBatches.emplace_back(offset, 6, _glyphs[cg]->texture);
 			}else{
 				_renderBatches.back().numVertices += 6;
 			}

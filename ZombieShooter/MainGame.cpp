@@ -1,12 +1,14 @@
 #include "MainGame.h"
 
-// GO TO MINUTE 4
+// GO TO MINUTE 32
+// DEBUG TEXTURES FOR LEVEL
 
 MainGame::MainGame() :_screenWidth(900),
 _screenHeight(600),
 _gameState(GameState::PLAY),
 _currentLevel(0),
-_fps(60.0f)
+_fps(60.0f),
+_player(nullptr)
 {
 }
 
@@ -21,7 +23,7 @@ MainGame::~MainGame()
 void MainGame::run() {
 	//_levels.push_back(new Level("Levels/level1.txt"));
 	initSystems();
-
+	initLevel();
 	gameLoop();
 }
 
@@ -29,12 +31,22 @@ void MainGame::initSystems() {
 	DawnEngine::init();
 
 	_window.create("Zombie Shooter", _screenWidth, _screenHeight, 0);
-
+	glClearColor(0.7f, 0.7f, 0.7f, 0.1f);
 	initShaders();
 
-	_camera.init(_screenWidth, _screenHeight);
+	_agentSpriteBatch.init();
 
+	_camera.init(_screenWidth, _screenHeight);
+}
+
+void MainGame::initLevel() {
 	_levels.push_back(new Level("Levels/level1.txt"));
+	_currentLevel = 0;
+
+	_player = new Player();
+	_player->init(4.0f, _levels[_currentLevel]->getStartPlayerPos(), &_inputManager);
+
+	_humans.push_back(_player);
 }
 
 void MainGame::initShaders() {
@@ -53,10 +65,20 @@ void MainGame::gameLoop() {
 	while (_gameState == GameState::PLAY) {
 		fpsLimiter.beginFrame();
 		processInput();
+		updateAgents();
+		_camera.setPosition(_player->getPosition());
 		_camera.update();
 		drawGame();
 		_fps = fpsLimiter.endFrame();
 	}
+}
+
+void MainGame::updateAgents() {
+	for (int i = 0; i < _humans.size(); ++i) {
+		_humans[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies);
+	}
+
+	// dont forget to update zombies
 }
 
 void MainGame::processInput() {
@@ -107,6 +129,16 @@ void MainGame::drawGame() {
 	// Draw the level
 	_levels[_currentLevel]->draw();
 
+	// Begin drawing agents
+	_agentSpriteBatch.begin();
+
+	//Draw the humans
+	for (int i = 0; i < _humans.size(); ++i) {
+		_humans[i]->draw(_agentSpriteBatch);
+	}
+
+	_agentSpriteBatch.end();
+	_agentSpriteBatch.renderBatch();
 	_textureProgram.unuse();
 
 	// Swap our buffer and draw eveything to the screen
