@@ -1,7 +1,5 @@
 #include "Level.h"
 
-
-
 Level::Level(const std::string& fileName)
 {
 	std::ifstream file;
@@ -15,6 +13,9 @@ Level::Level(const std::string& fileName)
 	std::string tmp;
 	file >> tmp >> _numHumans; 
 
+	std::getline(file, tmp); // Throw away the rest of the first line
+
+	// Read the level data
 	while (std::getline(file, tmp)) {
 		_levelData.push_back(tmp);
 		static int i = 0;
@@ -74,6 +75,20 @@ Level::Level(const std::string& fileName)
 
 void Level::draw() {
 	_spriteBatch.renderBatch();
+}
+
+// Level data is a vector of strings. Length of element is width
+int Level::getWidth() const {
+	return _levelData[0].size();
+}
+
+// Level data is a vector of strings. Length of vector is height
+int Level::getHeight() const {
+	return _levelData.size();
+}
+
+int Level::getNumHumans() const {
+	return _numHumans;
 }
 
 glm::vec2 Level::getStartPlayerPos() const{

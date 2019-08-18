@@ -4,7 +4,8 @@
 #include <DawnEngine/ResourceManager.h>
 #include "Level.h"
 
-const float AGENT_WIDTH = 30;
+const float AGENT_WIDTH = 30.0f; // 30.0f
+const float AGENT_RADIUS = AGENT_WIDTH / 2.0f;
 
 // Forward declaration instead of header file to prevent circular dependency
 class Zombie;
@@ -18,9 +19,14 @@ public:
 
 	virtual void update(const std::vector<std::string>& levelData, std::vector<Human*> humans, std::vector<Zombie*> zombies) = 0;
 
-	void collideWithLevel(const std::vector<std::string>& levelData);
+	bool collideWithLevel(const std::vector<std::string>& levelData);
+
+	bool collideWithAgent(Agent* agent);
 
 	void draw(DawnEngine::SpriteBatch& _spriteBatch);
+
+	// Return true if died
+	bool applyDamage(float damage);
 
 	glm::vec2 getPosition() const;
 
@@ -31,6 +37,7 @@ protected:
 	glm::vec2 _position;
 	DawnEngine::Color _color;
 	float _speed;
+	float _health;
 
 };
 

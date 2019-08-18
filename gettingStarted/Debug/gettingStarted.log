@@ -1,9 +1,2 @@
 ﻿  Bullet.cpp
-  Game.cpp
-c:\users\user\documents\projects\gettingstarted\gettingstarted\game.cpp(65): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
-c:\users\user\documents\projects\gettingstarted\gettingstarted\game.cpp(119): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\user\documents\projects\gettingstarted\gettingstarted\game.cpp(124): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\projects\gettingstarted\gettingstarted\game.cpp(188): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-  Generating Code...
   gettingStarted.vcxproj -> C:\Users\User\Documents\Projects\gettingStarted\Debug\gettingStarted.exe

@@ -9,10 +9,18 @@
 #include <DawnEngine/Timing.h>
 #include <DawnEngine/SpriteBatch.h>
 #include <iostream>
+#include <random>
+#include <ctime>
 #include "Level.h"
 #include "Player.h"
-
 #include "Zombie.h"
+#include "Gun.h"
+#include "Bullet.h"
+#include <DawnEngine/Errors.h>
+
+const float HUMAN_SPEED = 1.0f;
+const float ZOMBIE_SPEED = 1.3f;
+const float PLAYER_SPEED = 4.0f;
 
 enum class GameState {
 	PLAY,
@@ -44,6 +52,12 @@ private:
 	//Update all agents
 	void updateAgents();
 
+	//Update all bullets
+	void updateBullets();
+
+	// Check victory condition
+	void checkVictory();
+
 	//Handles input processing
 	void processInput();
 
@@ -68,6 +82,10 @@ private:
 	Player* _player;
 	std::vector<Human*> _humans; //Vector for all humans
 	std::vector<Zombie*> _zombies; //Vector for all zombies
+	std::vector<Bullet> _bullets; //Vector for all bullets
+
+	int _numHumansKilled;
+	int _numZombiesKilled;
 
 	GameState _gameState;
 
