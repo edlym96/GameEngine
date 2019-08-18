@@ -14,6 +14,8 @@ namespace DawnEngine{
 
 		glm::vec2 convertScreenToWorld(glm::vec2 screenCoords);
 
+		bool isObjectInView(const glm::vec2& position, const glm::vec2& dimensions);
+
 		void setPosition(const glm::vec2& newPosition);
 		void setScale(float newScale);
 

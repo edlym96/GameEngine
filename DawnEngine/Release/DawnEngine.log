@@ -1,26 +1,4 @@
 ﻿  Camera2D.cpp
-  DawnEngine.cpp
-  Errors.cpp
-  GLSLProgram.cpp
-  ImageLoader.cpp
-  InputManager.cpp
-  IOManager.cpp
-c:\users\user\documents\projects\gettingstarted\dawnengine\iomanager.cpp(15): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
-c:\users\user\documents\projects\gettingstarted\dawnengine\iomanager.cpp(20): warning C4244: '-=': conversion from 'std::streamoff' to 'int', possible loss of data
-  picoPNG.cpp
-  ResourceManager.cpp
-  Sprite.cpp
-  SpriteBatch.cpp
-c:\users\user\documents\projects\gettingstarted\dawnengine\spritebatch.cpp(22): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\projects\gettingstarted\dawnengine\spritebatch.cpp(61): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\projects\gettingstarted\dawnengine\spritebatch.cpp(90): warning C4018: '<': signed/unsigned mismatch
-  TextureCache.cpp
-  Timing.cpp
-c:\users\user\documents\projects\gettingstarted\dawnengine\timing.cpp(25): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
-c:\users\user\documents\projects\gettingstarted\dawnengine\timing.cpp(29): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-c:\users\user\documents\projects\gettingstarted\dawnengine\timing.cpp(39): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
-c:\users\user\documents\projects\gettingstarted\dawnengine\timing.cpp(41): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
-  Window.cpp
 opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
 glew32.lib(glew32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
   DawnEngine.vcxproj -> C:\Users\User\Documents\Projects\gettingStarted\Release\DawnEngine.lib

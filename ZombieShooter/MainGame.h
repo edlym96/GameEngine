@@ -11,6 +11,7 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <algorithm>
 #include "Level.h"
 #include "Player.h"
 #include "Zombie.h"
@@ -50,10 +51,10 @@ private:
 	void gameLoop();
 
 	//Update all agents
-	void updateAgents();
+	void updateAgents(float deltaTime);
 
 	//Update all bullets
-	void updateBullets();
+	void updateBullets(float deltaTime);
 
 	// Check victory condition
 	void checkVictory();

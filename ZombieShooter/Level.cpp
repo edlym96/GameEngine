@@ -26,7 +26,7 @@ Level::Level(const std::string& fileName)
 
 	// Create the UVrect
 	glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
-	DawnEngine::Color whiteColor;
+	DawnEngine::ColorRGBA8 whiteColor;
 	whiteColor.r = 255;
 	whiteColor.g = 255;
 	whiteColor.b = 255;

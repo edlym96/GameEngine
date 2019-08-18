@@ -17,7 +17,7 @@ public:
 	Agent();
 	virtual ~Agent();
 
-	virtual void update(const std::vector<std::string>& levelData, std::vector<Human*> humans, std::vector<Zombie*> zombies) = 0;
+	virtual void update(const std::vector<std::string>& levelData, std::vector<Human*> humans, std::vector<Zombie*> zombies, float deltaTime) = 0;
 
 	bool collideWithLevel(const std::vector<std::string>& levelData);
 
@@ -35,7 +35,7 @@ protected:
 
 	void _collideWithTile(glm::vec2 tilePos);
 	glm::vec2 _position;
-	DawnEngine::Color _color;
+	DawnEngine::ColorRGBA8 _color;
 	float _speed;
 	float _health;
 

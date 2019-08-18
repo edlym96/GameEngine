@@ -18,7 +18,7 @@ public:
 	~Bullet();
 
 	// WHen update returns true, delete bullet
-	bool update(const std::vector<std::string>& levelData);
+	bool update(const std::vector<std::string>& levelData, float deltaTime);
 	void draw(DawnEngine::SpriteBatch& spriteBatch);
 	bool collideWithAgent(Agent* agent);
 	float getDamage() const ;

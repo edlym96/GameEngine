@@ -71,9 +71,9 @@ void MainGame::initLevel() {
 
 	// Set up players guns
 	const float BULLET_SPEED = 20.0f;
-	_player->addGun(new Gun("Magnum", 10, 1, 0.0f, 30, BULLET_SPEED));
-	_player->addGun(new Gun("Shotgun", 30, 20, 40.0f, 10, BULLET_SPEED));
-	_player->addGun(new Gun("MP5", 3, 1, 5.0f, 10, BULLET_SPEED));
+	_player->addGun(new Gun("Magnum", 10, 1, 0.0f, 100, BULLET_SPEED));
+	_player->addGun(new Gun("Shotgun", 30, 20, 40.0f, 20, BULLET_SPEED));
+	_player->addGun(new Gun("MP5", 3, 1, 5.0f, 30, BULLET_SPEED));
 }
 
 void MainGame::initShaders() {
@@ -87,15 +87,34 @@ void MainGame::initShaders() {
 
 void MainGame::gameLoop() {
 	DawnEngine::FpsLimiter fpsLimiter;
+	const float DESIRED_FPS = 60.0f;
+	const int MAX_PHYSICS_STEPS = 6;
 	fpsLimiter.setMaxFPS(60.0f);
-	const float CAMERA_SCALE = 1.0f / 4.0f;
+	const float CAMERA_SCALE = 1.0f / 2.0f;
 	_camera.setScale(CAMERA_SCALE);
+
+	const float MS_PER_SECOND = 1000.0f;
+	const float DESIRED_FRAMETIME = MS_PER_SECOND / DESIRED_FPS;//number of milliseconds for one frame
+	const float MAX_DELTA_TIME = 1.0f;
+
+	float prevTicks = SDL_GetTicks(); // get number of milliseconds since program started
 	while (_gameState == GameState::PLAY) {
 		fpsLimiter.beginFrame();
+		float newTicks = SDL_GetTicks();
+		float frameTime = newTicks - prevTicks;
+		prevTicks = newTicks;
+		float totalDeltaTime = frameTime / DESIRED_FRAMETIME;
 		checkVictory();
+		_inputManager.update();
 		processInput();
-		updateAgents();
-		updateBullets();
+		int i = 0;
+		while (totalDeltaTime > 0.0f && i<MAX_PHYSICS_STEPS) {
+			float deltaTime = std::min(totalDeltaTime, MAX_DELTA_TIME);
+			updateAgents(deltaTime);
+			updateBullets(deltaTime);
+			totalDeltaTime -= deltaTime;
+			++i;
+		}
 		_camera.setPosition(_player->getPosition());
 		_camera.update();
 		drawGame();
@@ -103,15 +122,15 @@ void MainGame::gameLoop() {
 	}
 }
 
-void MainGame::updateAgents() {
+void MainGame::updateAgents(float deltaTime) {
 	//UPdate all humans
 	for (int i = 0; i < _humans.size(); ++i) {
-		_humans[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies);
+		_humans[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies, deltaTime);
 	}
 
 	// update zombies
 	for (int i = 0; i < _zombies.size(); ++i) {
-		_zombies[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies);
+		_zombies[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies, deltaTime);
 	}
 
 	// UPdate zombie collision
@@ -151,11 +170,11 @@ void MainGame::updateAgents() {
 	}
 }
 
-void MainGame::updateBullets() {
+void MainGame::updateBullets(float deltaTime) {
 	// Update and collide with world
 	for (int i = 0; i < _bullets.size(); ) {
 		// If update returned true, bullet has collided with a wall
-		if (_bullets[i].update(_levels[_currentLevel]->getLevelData())) {
+		if (_bullets[i].update(_levels[_currentLevel]->getLevelData(),deltaTime)) {
 			// remove the bullet
 			_bullets[i] = _bullets.back();
 			_bullets.pop_back();
@@ -278,14 +297,20 @@ void MainGame::drawGame() {
 	// Begin drawing agents
 	_agentSpriteBatch.begin();
 
+	glm::vec2 AGENT_DIMS(AGENT_RADIUS * 2.0f);
+
 	//Draw the humans
 	for (int i = 0; i < _humans.size(); ++i) {
-		_humans[i]->draw(_agentSpriteBatch);
+		if (_camera.isObjectInView(_humans[i]->getPosition(), AGENT_DIMS)) {
+			_humans[i]->draw(_agentSpriteBatch);
+		}
 	}
 
 	//Draw the zombies
 	for (int i = 0; i < _zombies.size(); ++i) {
-		_zombies[i]->draw(_agentSpriteBatch);
+		if (_camera.isObjectInView(_zombies[i]->getPosition(), AGENT_DIMS)) {
+			_zombies[i]->draw(_agentSpriteBatch);
+		}
 	}
 
 	// Draw the bullets

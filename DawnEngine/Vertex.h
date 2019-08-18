@@ -7,7 +7,9 @@ namespace DawnEngine {
 		float y;
 	};
 
-	struct Color {
+	struct ColorRGBA8 {
+		ColorRGBA8() {};
+		ColorRGBA8(GLubyte R, GLubyte G, GLubyte B, GLubyte A):r(R),g(G),b(B),a(A) {};
 		GLubyte r;
 		GLubyte g;
 		GLubyte b;
@@ -23,7 +25,7 @@ namespace DawnEngine {
 			float v;
 		} uv;
 		
-		Color color;
+		ColorRGBA8 color;
 
 		void setPosition(float x, float y) {
 			position.x = x;

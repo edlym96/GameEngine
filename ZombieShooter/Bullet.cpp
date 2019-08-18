@@ -15,15 +15,15 @@ Bullet::~Bullet()
 {
 }
 
-bool Bullet::update(const std::vector<std::string>& levelData) {
-	_position += _direction * _speed;
+bool Bullet::update(const std::vector<std::string>& levelData, float deltaTime) {
+	_position += _direction * _speed*deltaTime;
 	return _collideWithLevel(levelData);
 }
 
 void Bullet::draw(DawnEngine::SpriteBatch& spriteBatch) {
 	glm::vec4 destRect(_position.x, _position.y, BULLET_RADIUS*2, BULLET_RADIUS*2);
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
-	DawnEngine::Color color;
+	DawnEngine::ColorRGBA8 color;
 	color.r = 75;
 	color.g = 75;
 	color.b = 75;
