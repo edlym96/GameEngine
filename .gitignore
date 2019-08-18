@@ -2,5 +2,5 @@ deps/*
 /.vs
 !deps/include
 !deps/lib
-./gettingStarted/*
+/gettingStarted/
 
