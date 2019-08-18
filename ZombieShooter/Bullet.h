@@ -24,10 +24,10 @@ public:
 	float getDamage() const ;
 
 private:
-	bool _collideWithLevel(const std::vector<std::string>& levelData);
-	glm::vec2 _position;
-	glm::vec2 _direction;
-	float _damage;
-	float _speed;
+	bool m_collideWithLevel(const std::vector<std::string>& levelData);
+	glm::vec2 m_position;
+	glm::vec2 m_direction;
+	float m_damage;
+	float m_speed;
 };
 

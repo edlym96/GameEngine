@@ -11,27 +11,27 @@ namespace DawnEngine {
 	}
 
 	void FpsLimiter::setMaxFPS(float maxFPS) {
-		_maxFPS = maxFPS;
+		m_maxFPS = maxFPS;
 	}
 
 	void FpsLimiter::beginFrame() {
-		_startTicks = SDL_GetTicks();
+		m_startTicks = SDL_GetTicks();
 	}
 
 	//end will return current fps
 	float FpsLimiter::endFrame() {
-		_calculateFPS();
+		m_calculateFPS();
 
-		float frameTicks = SDL_GetTicks() - _startTicks;
+		float frameTicks = SDL_GetTicks() - m_startTicks;
 		// limit fps to max fps
 		// if the ms per frame for maxFPS is more than the current ms per frame (current frame processing is faster)
-		if (1000.0f / _maxFPS > frameTicks) {
-			SDL_Delay(1000.0f / _maxFPS - frameTicks); // delay by the difference
+		if (1000.0f / m_maxFPS > frameTicks) {
+			SDL_Delay(1000.0f / m_maxFPS - frameTicks); // delay by the difference
 		}
-		return _fps;
+		return m_fps;
 	}
 
-	void FpsLimiter::_calculateFPS() {
+	void FpsLimiter::m_calculateFPS() {
 		static const int NUM_SAMPLES = 10;
 		static float frameTimes[NUM_SAMPLES];
 		static int currentFrame = 0;
@@ -40,8 +40,8 @@ namespace DawnEngine {
 		float currentTicks;
 		currentTicks = SDL_GetTicks();
 
-		_frameTime = currentTicks - prevTicks;
-		frameTimes[currentFrame % NUM_SAMPLES] = _frameTime;
+		m_frameTime = currentTicks - prevTicks;
+		frameTimes[currentFrame % NUM_SAMPLES] = m_frameTime;
 
 		prevTicks = currentTicks;
 
@@ -63,10 +63,10 @@ namespace DawnEngine {
 		frameTimeAverage /= count;
 
 		if (frameTimeAverage > 0) {
-			_fps = 1000.0f / frameTimeAverage;
+			m_fps = 1000.0f / frameTimeAverage;
 		}
 		else {
-			_fps = 60.0f;
+			m_fps = 60.0f;
 		}
 	}
 }

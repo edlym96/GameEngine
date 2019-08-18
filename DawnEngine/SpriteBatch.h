@@ -68,21 +68,21 @@ namespace DawnEngine {
 		void renderBatch();
 
 	private:
-		void _createRenderBatches();
-		void _createVertexArray();
+		void m_createRenderBatches();
+		void m_createVertexArray();
 		void sortGlyphs();
 
-		static bool _compareFrontToBack(Glyph* a, Glyph* b);
-		static bool _compareBackToFront(Glyph* a, Glyph* b);
-		static bool _compareTexture(Glyph* a, Glyph* b);
+		static bool m_compareFrontToBack(Glyph* a, Glyph* b);
+		static bool m_compareBackToFront(Glyph* a, Glyph* b);
+		static bool m_compareTexture(Glyph* a, Glyph* b);
 
-		GLuint _vbo;
-		GLuint _vao;
+		GLuint m_vbo;
+		GLuint m_vao;
 
-		GlyphSortType _sortType;
+		GlyphSortType m_sortType;
 
-		std::vector<Glyph> _glyphs; // use vector of glyphs stored in contiguous array for quick lookup
-		std::vector<Glyph*> _glyphPointers; //use pointers because sorting pointers is more memory efficient than sorting the structs themselves
-		std::vector<RenderBatch> _renderBatches;
+		std::vector<Glyph> m_glyphs; // use vector of glyphs stored in contiguous array for quick lookup
+		std::vector<Glyph*> m_glyphPointers; //use pointers because sorting pointers is more memory efficient than sorting the structs themselves
+		std::vector<RenderBatch> m_renderBatches;
 	};
 }

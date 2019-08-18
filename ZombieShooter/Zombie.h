@@ -12,6 +12,6 @@ public:
 	virtual void update(const std::vector<std::string>& levelData, std::vector<Human*> humans, std::vector<Zombie*> zombies, float deltaTime) override;
 
 private:
-	Human* _getNearestHuman(std::vector<Human*> humans);
+	Human* m_getNearestHuman(std::vector<Human*> humans);
 };
 

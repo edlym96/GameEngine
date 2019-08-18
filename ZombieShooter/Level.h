@@ -26,13 +26,13 @@ public:
 	const std::vector<glm::vec2>& getZombieStartPos() const;
 	const std::vector<std::string>& getLevelData() const;
 private:
-	std::vector<std::string> _levelData;
-	int _numHumans;
-	DawnEngine::SpriteBatch _spriteBatch;
+	std::vector<std::string> m_levelData;
+	int m_numHumans;
+	DawnEngine::SpriteBatch m_spriteBatch;
 
-	DawnEngine::ResourceManager* _resourceManager; //Pointer to the manager in maingame
+	DawnEngine::ResourceManager* m_resourceManager; //Pointer to the manager in maingame
 
-	glm::vec2 _startPlayerPosition;
-	std::vector<glm::vec2> _zombieStartPositions;
+	glm::vec2 m_startPlayerPosition;
+	std::vector<glm::vec2> m_zombieStartPositions;
 };
 

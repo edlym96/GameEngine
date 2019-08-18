@@ -2,7 +2,7 @@
 
 namespace DawnEngine {
 
-	InputManager::InputManager() :_mouseCoords(0.0f)
+	InputManager::InputManager() :m_mouseCoords(0.0f)
 	{
 	}
 
@@ -12,27 +12,27 @@ namespace DawnEngine {
 	}
 
 	void InputManager::update() {
-		for (auto it:_keyMap) {
-			_previousKeyMap[it.first] = it.second;
+		for (auto it:m_keyMap) {
+			m_previousKeyMap[it.first] = it.second;
 		}
 	}
 
 	void InputManager::pressKey(unsigned int keyID) {
-		_keyMap[keyID] = true;
+		m_keyMap[keyID] = true;
 	}
 
 	void InputManager::releaseKey(unsigned int keyID) {
-		_keyMap[keyID] = false;
+		m_keyMap[keyID] = false;
 	}
 
 	void InputManager::setMouseCoords(float x, float y) {
-		_mouseCoords.x = x;
-		_mouseCoords.y = y;
+		m_mouseCoords.x = x;
+		m_mouseCoords.y = y;
 	}
 
 	bool InputManager::isKeyDown(unsigned int keyID) {
-		auto it = _keyMap.find(keyID);
-		if (it != _keyMap.end()) {
+		auto it = m_keyMap.find(keyID);
+		if (it != m_keyMap.end()) {
 			return it->second;
 		}
 		else {
@@ -41,19 +41,19 @@ namespace DawnEngine {
 	}
 
 	bool InputManager::isKeyPressed(unsigned int keyID) {
-		if (isKeyDown(keyID) && !_wasKeyDown(keyID)) {
+		if (isKeyDown(keyID) && !m_wasKeyDown(keyID)) {
 			return true;
 		}
 		return false;
 	}
 
 	glm::vec2 InputManager::getMouseCoords() const{
-		return _mouseCoords;
+		return m_mouseCoords;
 	}
 
-	bool InputManager::_wasKeyDown(unsigned int keyID) {
-		auto it = _previousKeyMap.find(keyID);
-		if (it != _previousKeyMap.end()) {
+	bool InputManager::m_wasKeyDown(unsigned int keyID) {
+		auto it = m_previousKeyMap.find(keyID);
+		if (it != m_previousKeyMap.end()) {
 			return it->second;
 		}
 		else {

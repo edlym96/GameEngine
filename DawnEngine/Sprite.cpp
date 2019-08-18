@@ -1,6 +1,6 @@
 #include "Sprite.h"
 namespace DawnEngine {
-	Sprite::Sprite() :_vboID(0)
+	Sprite::Sprite() :m_vboID(0)
 	{
 
 	}
@@ -8,22 +8,22 @@ namespace DawnEngine {
 
 	Sprite::~Sprite()
 	{
-		if (_vboID != 0) {
-			glDeleteBuffers(1, &_vboID);
+		if (m_vboID != 0) {
+			glDeleteBuffers(1, &m_vboID);
 		}
 	}
 
 	void Sprite::init(float x, float y, float width, float height, std::string texturePath) {
-		_x = x;
-		_y = y;
-		_width = width;
-		_height = height;
+		m_x = x;
+		m_y = y;
+		m_width = width;
+		m_height = height;
 
-		_texture = ResourceManager::getTexture(texturePath);
+		m_texture = ResourceManager::getTexture(texturePath);
 
 		//Create buffer it hasnt already been generated
-		if (_vboID == 0) {
-			glGenBuffers(1, &_vboID);
+		if (m_vboID == 0) {
+			glGenBuffers(1, &m_vboID);
 		}
 
 		Vertex vertexData[6];//6 vertices, x and y for each
@@ -77,7 +77,7 @@ namespace DawnEngine {
 		//vertexData[4].color.b = 0;
 		//vertexData[4].color.a = 255;
 
-		glBindBuffer(GL_ARRAY_BUFFER, _vboID);
+		glBindBuffer(GL_ARRAY_BUFFER, m_vboID);
 
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 
@@ -85,9 +85,9 @@ namespace DawnEngine {
 	}
 
 	void Sprite::draw() {
-		glBindTexture(GL_TEXTURE_2D, _texture.id);
+		glBindTexture(GL_TEXTURE_2D, m_texture.id);
 
-		glBindBuffer(GL_ARRAY_BUFFER, _vboID);
+		glBindBuffer(GL_ARRAY_BUFFER, m_vboID);
 		glEnableVertexAttribArray(0); //Enable vertex attrib array of index i
 		glEnableVertexAttribArray(1);
 		glEnableVertexAttribArray(2);

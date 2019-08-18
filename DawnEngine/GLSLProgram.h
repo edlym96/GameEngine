@@ -19,10 +19,10 @@ namespace DawnEngine {
 	private:
 		void compileShader(const std::string& filePath, GLuint ID);
 
-		int _numAttributes;
-		GLuint _programID; //ID that refers to shader program
-		GLuint _vertexShaderID; //ID for vertex shader
-		GLuint _fragmentShaderID; //ID to reference fragment shader
+		int m_numAttributes;
+		GLuint m_programID; //ID that refers to shader program
+		GLuint m_vertexShaderID; //ID for vertex shader
+		GLuint m_fragmentShaderID; //ID to reference fragment shader
 	};
 
 }

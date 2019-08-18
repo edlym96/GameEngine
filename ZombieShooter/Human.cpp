@@ -1,6 +1,6 @@
 #include "Human.h"
 
-Human::Human():_frames(0)
+Human::Human():m_frames(0)
 {
 }
 
@@ -15,23 +15,23 @@ void Human::init(float speed, glm::vec2 pos) {
 	static std::mt19937 randomEngine(time(nullptr)); //seed the randomengine with time
 	static std::uniform_real_distribution<float> randDir(-1.0f, 1.0f);
 
-	_health = 20;
+	m_health = 20;
 
-	_color.r = 200;
-	_color.g = 0;
-	_color.b = 200;
-	_color.a = 255;
+	m_color.r = 200;
+	m_color.g = 0;
+	m_color.b = 200;
+	m_color.a = 255;
 
-	_speed = speed;
-	_position = pos;
+	m_speed = speed;
+	m_position = pos;
 	//Get random direction
-	_direction = glm::vec2(randDir(randomEngine), randDir(randomEngine));
+	m_direction = glm::vec2(randDir(randomEngine), randDir(randomEngine));
 	// Handle the very unlikely case direction is initialised to zero
-	if (_direction.length() == 0) {
-		_direction = glm::vec2(1.0f, 0.0f);
+	if (m_direction.length() == 0) {
+		m_direction = glm::vec2(1.0f, 0.0f);
 	}
 
-	_direction = glm::normalize(_direction);
+	m_direction = glm::normalize(m_direction);
 }
 
 void Human::update(const std::vector<std::string>& levelData, std::vector<Human*> humans, std::vector<Zombie*> zombies, float deltaTime) {
@@ -39,18 +39,18 @@ void Human::update(const std::vector<std::string>& levelData, std::vector<Human*
 	static std::mt19937 randomEngine(time(nullptr)); //seed the randomengine with time
 	static std::uniform_real_distribution<float> randRotate(-40.0f * 3.14159265359f / 180, 40.0f * 3.14159265359f / 180);
 
-	_position += _direction * _speed*deltaTime;
+	m_position += m_direction * m_speed*deltaTime;
 
 	// Randomly change direction every 20 frames
-	if (_frames == 20) {
-		_direction = glm::rotate(_direction, randRotate(randomEngine));
-		_frames = 0;
+	if (m_frames == 20) {
+		m_direction = glm::rotate(m_direction, randRotate(randomEngine));
+		m_frames = 0;
 	}
 	else {
-		_frames++;
+		m_frames++;
 	}
 
 	if (collideWithLevel(levelData)) {
-		_direction = _direction = glm::rotate(_direction, randRotate(randomEngine));
+		m_direction = m_direction = glm::rotate(m_direction, randRotate(randomEngine));
 	};
 }

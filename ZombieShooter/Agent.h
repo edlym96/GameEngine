@@ -31,13 +31,13 @@ public:
 	glm::vec2 getPosition() const;
 
 protected:
-	void _checkTilePosition(const std::vector<std::string>& levelData, std::vector<glm::vec2>& collideTilePosition, float x, float y);
+	void m_checkTilePosition(const std::vector<std::string>& levelData, std::vector<glm::vec2>& collideTilePosition, float x, float y);
 
-	void _collideWithTile(glm::vec2 tilePos);
-	glm::vec2 _position;
-	DawnEngine::ColorRGBA8 _color;
-	float _speed;
-	float _health;
+	void m_collideWithTile(glm::vec2 tilePos);
+	glm::vec2 m_position;
+	DawnEngine::ColorRGBA8 m_color;
+	float m_speed;
+	float m_health;
 
 };
 

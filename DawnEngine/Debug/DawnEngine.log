@@ -1,9 +1,29 @@
-﻿  SpriteBatch.cpp
-c:\users\user\documents\projects\gettingstarted\dawnengine\spritebatch.cpp(22): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\projects\gettingstarted\dawnengine\spritebatch.cpp(61): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\projects\gettingstarted\dawnengine\spritebatch.cpp(90): warning C4018: '<': signed/unsigned mismatch
+﻿  Camera2D.cpp
+  GLSLProgram.cpp
+  ImageLoader.cpp
+  InputManager.cpp
+  IOManager.cpp
+c:\users\user\documents\projects\gettingstarted\dawnengine\iomanager.cpp(15): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+c:\users\user\documents\projects\gettingstarted\dawnengine\iomanager.cpp(20): warning C4244: '-=': conversion from 'std::streamoff' to 'int', possible loss of data
+  ResourceManager.cpp
+  Sprite.cpp
+  SpriteBatch.cpp
+c:\users\user\documents\projects\gettingstarted\dawnengine\spritebatch.cpp(28): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\dawnengine\spritebatch.cpp(44): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\dawnengine\spritebatch.cpp(73): warning C4018: '<': signed/unsigned mismatch
+  SpriteFont.cpp
+  TextureCache.cpp
+  Timing.cpp
+c:\users\user\documents\projects\gettingstarted\dawnengine\timing.cpp(25): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+c:\users\user\documents\projects\gettingstarted\dawnengine\timing.cpp(29): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+c:\users\user\documents\projects\gettingstarted\dawnengine\timing.cpp(39): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+c:\users\user\documents\projects\gettingstarted\dawnengine\timing.cpp(41): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
+  Window.cpp
+  Generating Code...
 opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
 opengl32.lib(OPENGL32.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
 glew32.lib(glew32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
 glew32.lib(glew32.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
+SDL2_ttf.lib(SDL2_ttf.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
+SDL2_ttf.lib(SDL2_ttf.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
   DawnEngine.vcxproj -> C:\Users\User\Documents\Projects\gettingStarted\Debug\DawnEngine.lib

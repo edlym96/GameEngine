@@ -17,14 +17,14 @@ public:
 
 
 private:
-	std::string _name;
-	int _fireRate; // fireRate in terms of frames
-	int _bulletsPerShot;
-	float _spread; //accuracy
-	float _bulletSpeed;
-	float _bulletDamage;
-	float _frameCounter;
+	std::string m_name;
+	int m_fireRate; // fireRate in terms of frames
+	int m_bulletsPerShot;
+	float m_spread; //accuracy
+	float m_bulletSpeed;
+	float m_bulletDamage;
+	float m_frameCounter;
 
-	void _fire(const glm::vec2& position, const glm::vec2& direction, std::vector<Bullet>& bullets);
+	void m_fire(const glm::vec2& position, const glm::vec2& direction, std::vector<Bullet>& bullets);
 };
 

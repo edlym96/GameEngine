@@ -8,6 +8,7 @@
 #include <DawnEngine/Camera2D.h>
 #include <DawnEngine/Timing.h>
 #include <DawnEngine/SpriteBatch.h>
+#include <DawnEngine/SpriteFont.h>
 #include <iostream>
 #include <random>
 #include <ctime>
@@ -65,33 +66,43 @@ private:
 	// Renders the game
 	void drawGame();
 
+	// Draws the HUD
+	void drawHUD();
+
 	//Member variables
-	DawnEngine::Window _window; //Game window
+	DawnEngine::Window m_window; //Game window
 
-	DawnEngine::GLSLProgram _textureProgram; // Shader program
+	DawnEngine::GLSLProgram m_textureProgram; // Shader program
 
-	DawnEngine::InputManager _inputManager; // Handles input
+	DawnEngine::InputManager m_inputManager; // Handles input
 
-	DawnEngine::Camera2D _camera; // Main camera 
+	DawnEngine::Camera2D m_camera; // Main camera 
 
-	DawnEngine::SpriteBatch _agentSpriteBatch; //Draws all agents
+	DawnEngine::Camera2D m_hudCamera; // HUD Camera
 
-	std::vector<Level*> _levels; //vector of all levels
+	DawnEngine::SpriteBatch m_agentSpriteBatch; //Draws all agents
 
-	int _screenWidth, _screenHeight;
+	DawnEngine::SpriteBatch m_hudSpriteBatch; // Sprite batch for drawing fonts
 
-	Player* _player;
-	std::vector<Human*> _humans; //Vector for all humans
-	std::vector<Zombie*> _zombies; //Vector for all zombies
-	std::vector<Bullet> _bullets; //Vector for all bullets
+	DawnEngine::SpriteFont* m_spriteFont;
 
-	int _numHumansKilled;
-	int _numZombiesKilled;
+	std::vector<Level*> m_levels; //vector of all levels
 
-	GameState _gameState;
+	int m_screenWidth = 900;
+	int	m_screenHeight = 600;
 
-	int _currentLevel;
+	Player* m_player;
+	std::vector<Human*> m_humans; //Vector for all humans
+	std::vector<Zombie*> m_zombies; //Vector for all zombies
+	std::vector<Bullet> m_bullets; //Vector for all bullets
 
-	float _fps;
+	int m_numHumansKilled;
+	int m_numZombiesKilled;
+
+	GameState m_gameState;
+
+	int m_currentLevel;
+
+	float m_fps;
 };
 

@@ -18,10 +18,10 @@ public:
 	void update(const std::vector<std::string>& levelData, std::vector<Human*> humans, std::vector<Zombie*> zombies, float deltaTime) override;
 
 private:
-	DawnEngine::InputManager* _inputManager;
-	std::vector<Gun*> _guns;
-	int _currentGunIndex;
-	DawnEngine::Camera2D* _camera;
-	std::vector<Bullet>* _bullets;
+	DawnEngine::InputManager* m_inputManager;
+	std::vector<Gun*> m_guns;
+	int m_currentGunIndex;
+	DawnEngine::Camera2D* m_camera;
+	std::vector<Bullet>* m_bullets;
 };
 

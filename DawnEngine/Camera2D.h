@@ -24,12 +24,12 @@ namespace DawnEngine{
 		glm::mat4 getCameraMatrix();
 
 	private:
-		int _screenWidth;
-		int _screenHeight;
-		bool _needsMatrixUpdate;
-		float _scale;
-		glm::vec2 _position;
-		glm::mat4 _cameraMatrix;
-		glm::mat4 _orthoMatrix;
+		int m_screenWidth;
+		int m_screenHeight;
+		bool m_needsMatrixUpdate;
+		float m_scale;
+		glm::vec2 m_position;
+		glm::mat4 m_cameraMatrix;
+		glm::mat4 m_orthoMatrix;
 	};
 }

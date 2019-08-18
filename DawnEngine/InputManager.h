@@ -25,10 +25,10 @@ namespace DawnEngine{
 		//getters
 		glm::vec2 getMouseCoords() const;
 	private:
-		std::unordered_map<unsigned int, bool> _previousKeyMap;
-		std::unordered_map<unsigned int, bool> _keyMap;
-		glm::vec2 _mouseCoords;
-		bool _wasKeyDown(unsigned int keyID);
+		std::unordered_map<unsigned int, bool> m_previousKeyMap;
+		std::unordered_map<unsigned int, bool> m_keyMap;
+		glm::vec2 m_mouseCoords;
+		bool m_wasKeyDown(unsigned int keyID);
 	};
 
 }
