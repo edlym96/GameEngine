@@ -23,5 +23,6 @@ namespace DawnEngine {
 
 		file.read((char *)&(buffer[0]), fileSize); //get the address of first element in buffer vector. This is essentially a pointer to beginning of the c-string
 		file.close();
+		return true;
 	}
 }

@@ -88,7 +88,8 @@ void MainGame::initShaders() {
 void MainGame::gameLoop() {
 	DawnEngine::FpsLimiter fpsLimiter;
 	fpsLimiter.setMaxFPS(60.0f);
-
+	const float CAMERA_SCALE = 1.0f / 4.0f;
+	_camera.setScale(CAMERA_SCALE);
 	while (_gameState == GameState::PLAY) {
 		fpsLimiter.beginFrame();
 		checkVictory();
