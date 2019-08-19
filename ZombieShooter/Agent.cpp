@@ -31,6 +31,8 @@ bool Agent::collideWithLevel(const std::vector<std::string>& levelData) {
 		return false;
 	}
 
+	m_sortTiles(collideTilePosition);
+
 	for (int i = 0; i < collideTilePosition.size(); ++i) {
 		m_collideWithTile(collideTilePosition[i]);
 	}
@@ -132,3 +134,20 @@ void Agent::m_collideWithTile(glm::vec2 tilePos) {
 	}
 
 }
+
+void Agent::m_sortTiles(std::vector<glm::vec2>& collideTilePosition) {
+	std::stable_sort(collideTilePosition.begin(), collideTilePosition.end(), [&](glm::vec2 a, glm::vec2 b) {
+		glm::vec2 centerPlayerPos = m_position + glm::vec2(AGENT_RADIUS);
+		float distance_a = glm::distance(centerPlayerPos, a);
+		float distance_b = glm::distance(centerPlayerPos, b);
+		return (distance_a < distance_b);
+	});
+}
+
+/*bool Agent::m_compareTileDistance(glm::vec2 a, glm::vec2 b) {
+	glm::vec2 centerPlayerPos = m_position + glm::vec2(AGENT_RADIUS);
+	float distance_a = glm::distance(centerPlayerPos, a);
+	float distance_b = glm::distance(centerPlayerPos, b);
+	return (distance_a>distance_b);
+
+}*/

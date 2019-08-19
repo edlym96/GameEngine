@@ -1,10 +1,14 @@
 ﻿  Agent.cpp
-c:\users\user\documents\projects\gettingstarted\zombieshooter\agent.cpp(34): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\projects\gettingstarted\zombieshooter\agent.cpp(97): warning C4244: 'argument': conversion from 'T' to 'const unsigned int', possible loss of data
+c:\users\user\documents\projects\gettingstarted\zombieshooter\agent.cpp(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\agent.cpp(99): warning C4244: 'argument': conversion from 'T' to 'const unsigned int', possible loss of data
           with
           [
               T=float
           ]
+c:\users\user\documents\projects\gettingstarted\zombieshooter\agent.cpp(139): error C3867: 'Agent::m_compareTileDistance': non-standard syntax; use '&' to create a pointer to member
+c:\users\user\documents\projects\gettingstarted\zombieshooter\agent.cpp(139): error C2672: 'std::stable_sort': no matching overloaded function found
+c:\users\user\documents\projects\gettingstarted\zombieshooter\agent.cpp(139): error C2780: 'void std::stable_sort(_BidIt,_BidIt)': expects 2 arguments - 3 provided
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\algorithm(4287): note: see declaration of 'std::stable_sort'
   Bullet.cpp
 c:\users\user\documents\projects\gettingstarted\zombieshooter\bullet.cpp(58): warning C4244: '=': conversion from 'float' to 'T', possible loss of data
           with
@@ -23,19 +27,6 @@ c:\users\user\documents\projects\gettingstarted\zombieshooter\gun.cpp(30): warni
   Human.cpp
 c:\users\user\documents\projects\gettingstarted\zombieshooter\human.cpp(15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 c:\users\user\documents\projects\gettingstarted\zombieshooter\human.cpp(39): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Level.cpp
-c:\users\user\documents\projects\gettingstarted\zombieshooter\level.cpp(35): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\projects\gettingstarted\zombieshooter\level.cpp(36): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\projects\gettingstarted\zombieshooter\level.cpp(58): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-c:\users\user\documents\projects\gettingstarted\zombieshooter\level.cpp(59): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
   MainGame.cpp
 c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(18): warning C4018: '<': signed/unsigned mismatch
 c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(67): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
@@ -62,9 +53,3 @@ c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(332):
 c:\users\user\documents\projects\gettingstarted\zombieshooter\zombie.cpp(41): warning C4018: '<': signed/unsigned mismatch
   ZombieShooter.cpp
   main.cpp
-  Generating code
-  81 of 1889 functions ( 4.3%) were compiled, the rest were copied from previous compilation.
-    13 functions were new in current compilation
-    35 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  ZombieShooter.vcxproj -> C:\Users\User\Documents\Projects\gettingStarted\Release\ZombieShooter.exe

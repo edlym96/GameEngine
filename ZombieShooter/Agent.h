@@ -3,6 +3,8 @@
 #include <DawnEngine/SpriteBatch.h>
 #include <DawnEngine/ResourceManager.h>
 #include "Level.h"
+#include <algorithm>
+#include <vector>
 
 const float AGENT_WIDTH = 30.0f; // 30.0f
 const float AGENT_RADIUS = AGENT_WIDTH / 2.0f;
@@ -34,6 +36,8 @@ protected:
 	void m_checkTilePosition(const std::vector<std::string>& levelData, std::vector<glm::vec2>& collideTilePosition, float x, float y);
 
 	void m_collideWithTile(glm::vec2 tilePos);
+	void m_sortTiles(std::vector<glm::vec2>& collideTilePosition);
+	//static bool m_compareTileDistance(glm::vec2 a, glm::vec2 b);
 	glm::vec2 m_position;
 	DawnEngine::ColorRGBA8 m_color;
 	float m_speed;
