@@ -18,7 +18,7 @@ public:
 	void update(const std::vector<std::string>& levelData, std::vector<Human*> humans, std::vector<Zombie*> zombies, float deltaTime) override;
 
 private:
-	DawnEngine::InputManager* m_inputManager;
+	DawnEngine::InputManager* mm_inputManager;
 	std::vector<Gun*> m_guns;
 	int m_currentGunIndex;
 	DawnEngine::Camera2D* m_camera;

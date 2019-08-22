@@ -92,7 +92,7 @@ void MainGame::initLevel() {
 
 void MainGame::initShaders() {
 	// Compile color shader
-	m_textureProgram.compileShaders("../Shaders/ColorShading.vert", "../Shaders/ColorShading.frag");
+	m_textureProgram.compileShaders("Shaders/textureShading.vert", "Shaders/textureShading.frag");
 	m_textureProgram.addAttribute("vertexPosition");
 	m_textureProgram.addAttribute("vertexColor");
 	m_textureProgram.addAttribute("vertexUV");

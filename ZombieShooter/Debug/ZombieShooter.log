@@ -5,4 +5,62 @@ c:\users\user\documents\projects\gettingstarted\zombieshooter\agent.cpp(99): war
           [
               T=float
           ]
+  Bullet.cpp
+c:\users\user\documents\projects\gettingstarted\zombieshooter\bullet.cpp(58): warning C4244: '=': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=glm::i32
+          ]
+c:\users\user\documents\projects\gettingstarted\zombieshooter\bullet.cpp(59): warning C4244: '=': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=glm::i32
+          ]
+c:\users\user\documents\projects\gettingstarted\zombieshooter\bullet.cpp(62): warning C4018: '>=': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\bullet.cpp(63): warning C4018: '>=': signed/unsigned mismatch
+  Gun.cpp
+c:\users\user\documents\projects\gettingstarted\zombieshooter\gun.cpp(30): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Human.cpp
+c:\users\user\documents\projects\gettingstarted\zombieshooter\human.cpp(15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\user\documents\projects\gettingstarted\zombieshooter\human.cpp(39): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Level.cpp
+c:\users\user\documents\projects\gettingstarted\zombieshooter\level.cpp(35): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\level.cpp(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\level.cpp(58): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\user\documents\projects\gettingstarted\zombieshooter\level.cpp(59): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  main.cpp
+  MainGame.cpp
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(18): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(67): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(81): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(114): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(117): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(142): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(147): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(152): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(154): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(158): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(179): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(181): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(190): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(205): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(207): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(232): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(272): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(318): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(325): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\projects\gettingstarted\zombieshooter\maingame.cpp(332): warning C4018: '<': signed/unsigned mismatch
+  Player.cpp
+  Zombie.cpp
+c:\users\user\documents\projects\gettingstarted\zombieshooter\zombie.cpp(41): warning C4018: '<': signed/unsigned mismatch
+  ZombieShooter.cpp
+  Generating Code...
   ZombieShooter.vcxproj -> C:\Users\User\Documents\Projects\gettingStarted\Debug\ZombieShooter.exe

@@ -1,0 +1,4 @@
+﻿  MainGame.cpp
+c:\users\user\documents\projects\gettingstarted\pong\maingame.cpp(50): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\user\documents\projects\gettingstarted\pong\maingame.cpp(62): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
+  Pong.vcxproj -> C:\Users\User\Documents\Projects\gettingStarted\Debug\Pong.exe
